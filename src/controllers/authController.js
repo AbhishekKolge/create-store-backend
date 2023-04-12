@@ -38,12 +38,12 @@ const getOtp = async (req, res) => {
   }
 
   const otp = customUtils.generateOtp();
-  if (process.env.NODE_ENV === 'production') {
-    await customUtils.sendSms({
-      numbers: mobile,
-      message: `Your login OTP for Unthread is ${otp}`,
-    });
-  }
+
+  await customUtils.sendSms({
+    numbers: mobile,
+    message: `Your login OTP for Unthread is ${otp}`,
+  });
+
   user.verificationCode = otp;
   await user.save();
 
@@ -82,12 +82,12 @@ const signUp = async (req, res) => {
   const user = await User.create({ firstName, lastName, mobile });
 
   const otp = customUtils.generateOtp();
-  if (process.env.NODE_ENV === 'production') {
-    await customUtils.sendSms({
-      numbers: mobile,
-      message: `Your login OTP for Unthread is ${otp}`,
-    });
-  }
+
+  await customUtils.sendSms({
+    numbers: mobile,
+    message: `Your login OTP for Unthread is ${otp}`,
+  });
+
   user.verificationCode = otp;
   await user.save();
 
