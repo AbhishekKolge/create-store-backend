@@ -8,7 +8,7 @@ const googleAuth = (passport) => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_SECRET,
-        callbackURL: 'http://127.0.0.1:5000/api/v1/auth/google/callback',
+        callbackURL: `${process.env.HOST_URL}/api/v1/auth/google/callback`,
       },
       async (accessToken, refreshToken, profile, done) => {
         try {

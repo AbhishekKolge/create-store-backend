@@ -19,7 +19,7 @@ router
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    failureRedirect: '/api/v1/auth/google/failed',
+    failureRedirect: `${process.env.HOST_URL}/api/v1/auth/google/failed`,
   }),
   googleLoginSuccess
 );
